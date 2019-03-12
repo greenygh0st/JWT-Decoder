@@ -8,7 +8,7 @@ namespace JWTDecoder
     /// <summary>
     /// Sometimes all you need is a simple decoder.
     /// </summary>
-    public static class JWTDecoder
+    public static class Decoder
     {
         /// <summary>
         /// Decode the specified token.
@@ -107,6 +107,26 @@ namespace JWTDecoder
 
             return secretValid && expirationValid;
 
+        }
+
+        /// <summary>
+        /// Is the token expired?
+        /// </summary>
+        /// <returns><c>true</c>, if expired, <c>false</c> otherwise.</returns>
+        /// <param name="token">Token.</param>
+        public static bool IsExpired(string token)
+        {
+            var tokenDecoded = DecodeToken(token);
+            var expiration = JsonConvert.DeserializeObject<JwtExpiration>(tokenDecoded.Payload).Expiration;
+
+            bool isExpired = expiration != null;
+
+            if (expiration != null)
+            {
+                isExpired = DateTimeHelpers.FromUnixTime((long)expiration) > DateTime.Now;
+            }
+
+            return isExpired;
         }
     }
 
