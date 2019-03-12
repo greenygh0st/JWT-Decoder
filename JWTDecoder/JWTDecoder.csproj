@@ -7,6 +7,8 @@
     <Description>Sometimes you just need to decode the payload of a JWT Token in a C# client. This library aims to do just that.</Description>
     <ReleaseVersion>1.0</ReleaseVersion>
     <SynchReleaseVersion>false</SynchReleaseVersion>
+    <PackageId>JWTDecoder</PackageId>
+    <PackageVersion>0.9</PackageVersion>
   </PropertyGroup>
 
   <ItemGroup>
