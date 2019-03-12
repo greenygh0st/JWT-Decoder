@@ -29,6 +29,6 @@ You can also:
 string token = "...";
 
 // parse the payload to an object
-var decodedTokenPayload = JWTDecoder.DeserializeObject<MyCustomObject>(token);
+var decodedTokenPayload = JWTDecoder.DecodePayload<MyCustomObject>(token);
 
 ```
